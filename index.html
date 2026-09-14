@@ -109,6 +109,7 @@
 <meta name="text:header title" content=""/>
 <meta name="text:header title size" content="18"/>
 <meta name="text:sidebar icon size" content="150"/>
+<meta name="text:sidebar icon tooltip" content=""/>
 <meta name="text:header link divider" content=" ☆ "/>
 <meta name="text:header link one" content="link 1"/>
 <meta name="text:header link one url" content="/"/>
@@ -135,6 +136,15 @@
 <script>
     (function($){
         $(document).ready(function(){
+
+            // Only show a tooltip on the sidebar icon if the user actually filled in a tooltip text.
+            // An empty {text:sidebar icon tooltip} would otherwise still leave a blank title="" attribute,
+            // which the tooltip plugin would pick up and render as an empty bubble.
+            var $sidebarIcon = $(".sidebar-icon");
+            if ($.trim($sidebarIcon.attr("title") || "").length === 0) {
+                $sidebarIcon.removeAttr("title");
+            }
+
             $("[title]").style_my_tooltips();
 
              function useFallbackIfEmpty(customSelector, fallbackSelector){
@@ -161,7 +171,7 @@
 
     body {
         margin: 0;
-        padding: 20px;
+        padding: 25px;
         font-size: {text:font size}px;
         color: {color:text};
         background-image: url('{image:bg}');
@@ -177,7 +187,7 @@
 
     main {
         width: max-content;
-        max-width: 100%;
+        max-width: 95%;
         margin: 20px auto;
         display: flex;
         justify-content: center;
@@ -739,7 +749,7 @@
 
     <div id="sidebar-main" class="sidebar">
         <center>
-            <img class="sidebar-icon" src="{image:sidebar icon}" alt="">
+            <img class="sidebar-icon" src="{image:sidebar icon}" alt="" title="{text:sidebar icon tooltip}">
 
             <div class="header-title" id="header-title-custom">{text:header title}</div>
             <div class="header-title" id="header-title-default" style="display:none;">{Title}</div>
