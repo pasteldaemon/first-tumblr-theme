@@ -137,8 +137,7 @@
         $(document).ready(function(){
             $("[title]").style_my_tooltips();
 
-            // if a custom field is left blank, fall back to the blog's own title/description
-            function useFallbackIfEmpty(customSelector, fallbackSelector){
+             function useFallbackIfEmpty(customSelector, fallbackSelector){
                 var $custom = $(customSelector);
                 var hasText = $.trim($custom.text()).length > 0;
                 if (!hasText) {
@@ -183,7 +182,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        gap: 30px;
+        gap: 25px;
     }
 
     body.layout-left #sidebar-main { order: 1; }
@@ -234,6 +233,7 @@
         width: 200px;
         position: sticky;
         top: 20px;
+        margin-right:-8px;
         flex-shrink: 0;
         padding: 12px;
         background-color: {color:sidebar bg};
@@ -298,13 +298,16 @@
         width: 100%;
         max-width: calc(({select:grid columns} * {select:post size}) + (({select:grid columns} - 1) * 10px));
         column-count: {select:grid columns};
-        column-gap: 19px;  
+        column-gap: 22px;  
     }
 
     .post {
         width: 100%;
         padding: {text:post padding};
         margin-bottom: 10px; 
+        margin-left:10px;
+        margin-right:10px;
+        margin-top:10px;
         break-inside: avoid;
         -webkit-column-break-inside: avoid;
         display: inline-block;
