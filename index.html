@@ -87,8 +87,6 @@
 <meta name="if:round header icon" content="0"/>
 <meta name="if:heart icon" content="0"/>
 <meta name="if:header glow" content="0"/>
-<meta name="if:rainbow description" content="0"/>
-<meta name="if:pastel rainbow description" content="0"/>
 <meta name="if:pixel links" content="0"/>
 <meta name="if:not pixel links" content="1"/>
 <meta name="if:rounded" content="1"/>
@@ -283,7 +281,6 @@
         margin: 4px 0;
     }
 
-    .header-description,
     .sidebar-content {
         margin: 10px 0;
         text-align: center;
@@ -448,6 +445,10 @@
         {block:ifroundcontent}
         border-radius: 6px;
         {/block:ifroundcontent}
+        {block:ifpostboxshadow}
+        -webkit-box-shadow: 0px 0px 5px 5px {color:post box shadow};
+        box-shadow: 0px 0px 5px 5px {color:post box shadow};
+        {/block:ifpostboxshadow}
     }
 
     .footer a {
@@ -481,8 +482,6 @@
 
             <div class="header-title" id="header-title-custom">{text:header title}</div>
             <div class="header-title" id="header-title-default" style="display:none;">{Title}</div>
-
-            <div class="header-description">{text:header description}</div>
 
             <div class="sidebar-content">{text:sidebar content}</div>
 
