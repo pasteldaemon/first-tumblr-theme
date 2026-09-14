@@ -2,9 +2,10 @@
 <html>
 <head>
 <title>{Title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="{image:favicon}">
 <meta name="image:favicon" content=""/>
- <meta name="image:sidebar icon" content=""/>
+<meta name="image:sidebar icon" content=""/>
 <meta name="image:bg" content=""/>
 <meta name="image:link pixel one" content=""/>
 <meta name="image:link pixel two" content=""/>
@@ -182,7 +183,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        gap: 20px;
+        gap: 30px;
     }
 
     body.layout-left #sidebar-main { order: 1; }
@@ -297,7 +298,7 @@
         width: 100%;
         max-width: calc(({select:grid columns} * {select:post size}) + (({select:grid columns} - 1) * 10px));
         column-count: {select:grid columns};
-        column-gap: 10px;  
+        column-gap: 19px;  
     }
 
     .post {
@@ -471,6 +472,263 @@
 .mini-calendar {
     pointer-events: none;
 }
+@media screen and (max-width: 768px) {
+   body {
+    margin: 0;
+    padding: 10px;
+    font-size: {text:font size}px;
+    color: {color:text};
+    background-image: url('{image:bg}');
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+    background-color: {color:bg};
+    font-family: {text:font};
+    {block:iftextshadow}
+    text-shadow: 0 0 4px {color:text shadow};
+    {/block:iftextshadow}
+}
+        main {
+            width: 48%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .sidebar {
+            width: 100%;
+            position: relative;
+            top: 0;
+            padding: 12px;
+            background-color: {color:sidebar bg};
+            background-image: url('{image:sidebar bg}');
+            background-size: {select:sidebar bg size};
+            background-repeat: {select:sidebar bg repeat};
+            background-position: center;
+            {block:ifpostboxshadow}
+            box-shadow: 0px 0px 5px 5px {color:post box shadow};
+            {/block:ifpostboxshadow}
+        }
+
+        .sidebar-icon {
+            display: block;
+            width: {text:sidebar icon size}px;
+            height: {text:sidebar icon size}px;
+            max-width: 100%;
+            margin: 0 auto 10px auto;
+            object-fit: cover;
+            background-color: transparent;
+            {block:ifcircleheadericon}
+            border-radius: 50%;
+            {/block:ifcircleheadericon}
+            {block:ifroundheadericon}
+            border-radius: 20px;
+            {/block:ifroundheadericon}
+            {block:ifhearticon}
+            -webkit-mask-image: url(https://64.media.tumblr.com/530d6f82ba12efe719853b50499b1d5d/b58a88777157fa9c-6e/s500x750/69a0aa24e15c4c98f2b7ce62f6c00544e0b3a1c3.png);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-size: contain;
+            -webkit-mask-position: center;
+            mask-image: url(https://64.media.tumblr.com/530d6f82ba12efe719853b50499b1d5d/b58a88777157fa9c-6e/s500x750/69a0aa24e15c4c98f2b7ce62f6c00544e0b3a1c3.png);
+            mask-repeat: no-repeat;
+            mask-size: contain;
+            mask-position: center;
+            {/block:ifhearticon}
+            {block:ifheaderglow}
+            box-shadow: 0 0 25px {color:header glow};
+            {/block:ifheaderglow}
+            transition: 0.3s ease-in-out;
+        }
+
+        .header-title {
+            font-weight: bold;
+            font-size: {text:header title size}px;
+            margin: 4px 0;
+        }
+
+        .sidebar-content {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        #content {
+            width: 100%;
+        }
+
+        .posts-container {
+            margin: 0 auto;
+            width: 100%;
+            column-count: 1 !important;
+            column-gap: 0;
+        }
+
+        .post {
+            width: 100%;
+            display: block;
+            padding: {text:post padding};
+            margin-bottom: 15px;
+            background-color: {color:post bg};
+            color: {color:post text};
+            border-width: {text:post border width};
+            border-color: {color:post border};
+            border-style: {select:post border style};
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow: hidden;
+            {block:ifpostboxshadow}
+            -webkit-box-shadow: 0px 0px 5px 5px {color:post box shadow};
+            box-shadow: 0px 0px 5px 5px {color:post box shadow};
+            {/block:ifpostboxshadow}
+        }
+
+        .post .npf_row,
+        .post .npf_col,
+        .post .npf_container {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .post .npf_row {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 4px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .post .npf_col {
+            flex: 1 1 0px !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+        }
+
+        .post .caption,
+        .post .caption *,
+        .post p,
+        .post blockquote,
+        .post .npf_default {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: anywhere !important;
+            word-break: break-word !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .post *,
+        .post .caption *,
+        .post .reblog-list *,
+        .post .reblog-post * {
+            margin-top: 3px !important;
+            margin-bottom: 3px !important;
+            padding-top: 3px !important;
+            padding-bottom: 3px !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .post p,
+        .post blockquote,
+        .post .caption,
+        .post .npf_default,
+        .post figure,
+        .post .npf_row,
+        .post .npf_col,
+        .post .npf_container {
+            margin: 0 !important;
+            padding: 0 !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: anywhere !important;
+            word-break: break-word !important;
+            max-width: 100% !important;
+        }
+
+        .post p + p,
+        .post .npf_default + .npf_default {
+            margin-top: 2px !important;
+        }
+
+        .post img,
+        .post .media,
+        .post figure.tmblr-full {
+            max-width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+        }
+
+        .post iframe, 
+        .post .photoset, 
+        .post iframe.photoset {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+
+        .post a {
+            color: {color:post link};
+            transition: all 0.2s ease-in-out;
+        }
+
+        .post a:hover {
+            color: {color:post link hover};
+            transition: all 0.2s ease-in-out;
+        }
+
+        iframe, iframe.photoset, #pic img {
+            {block:ifrounded}
+            border-radius: 3px;
+            {/block:ifrounded}
+            transition: all 0.2s ease-in-out;
+        }
+
+        .footer {
+            padding: 2px 0;
+            margin-top: 2px;
+            color: {color:footer text};
+            background-color: {color:footer};
+            {block:ifroundcontent}
+            border-radius: 6px;
+            {/block:ifroundcontent}
+            {block:ifpostboxshadow}
+            -webkit-box-shadow: 0px 0px 5px 5px {color:post box shadow};
+            box-shadow: 0px 0px 5px 5px {color:post box shadow};
+            {/block:ifpostboxshadow}
+        }
+
+        .footer a {
+            color: {color:footer link};
+        }
+
+        .footer a:hover {
+            color: {color:footer link hover};
+        }
+
+        .nav {
+            margin-top: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        pre, code {
+            font-family: inherit !important;
+        }
+
+        .mini-calendar {
+            pointer-events: none;
+        }
+
+        #s-m-t-tooltip {
+            display: none !important;
+        }
+    }
 </style>
 </head>
 <body class="layout-{select:sidebar layout}">
