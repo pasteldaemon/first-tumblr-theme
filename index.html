@@ -4,7 +4,7 @@
 <title>{Title}</title>
 <link rel="shortcut icon" href="{image:favicon}">
 <meta name="image:favicon" content=""/>
-<meta name="image:sidebar icon" content=""/>
+ <meta name="image:sidebar icon" content=""/>
 <meta name="image:bg" content=""/>
 <meta name="image:link pixel one" content=""/>
 <meta name="image:link pixel two" content=""/>
@@ -109,7 +109,6 @@
 <meta name="text:font size" content="15"/>
 <meta name="text:header title" content=""/>
 <meta name="text:header title size" content="18"/>
-<meta name="text:sidebar content" content=""/>
 <meta name="text:sidebar icon size" content="150"/>
 <meta name="text:header link divider" content=" ☆ "/>
 <meta name="text:header link one" content="link 1"/>
@@ -123,7 +122,8 @@
 <meta name="text:header link five" content="link 5"/>
 <meta name="text:header link five url" content="/"/>
 
- 
+<meta name="text:sidebar content" content=""/>
+
 <meta name="text:notes" content=""/>
 <meta name="text:post padding" content="10px"/>
 <meta name="text:post margin bottom" content="20px"/>
@@ -138,6 +138,7 @@
         $(document).ready(function(){
             $("[title]").style_my_tooltips();
 
+            // if a custom field is left blank, fall back to the blog's own title/description
             function useFallbackIfEmpty(customSelector, fallbackSelector){
                 var $custom = $(customSelector);
                 var hasText = $.trim($custom.text()).length > 0;
@@ -151,8 +152,6 @@
             }
 
             useFallbackIfEmpty("#header-title-custom", "#header-title-default");
-            useFallbackIfEmpty("#header-description-custom", "#header-description-default");
-            useFallbackIfEmpty("#sidebar-content-custom", "#sidebar-content-default");
         });
     })(jQuery);
 </script>
@@ -478,15 +477,14 @@
 
     <div id="sidebar-main" class="sidebar">
         <center>
-<a href="/"><img class="sidebar-icon" data-toggle="tooltip" title="{Title}" src="{image:sidebar icon}"></a>
+            <img class="sidebar-icon" src="{image:sidebar icon}" alt="">
+
             <div class="header-title" id="header-title-custom">{text:header title}</div>
             <div class="header-title" id="header-title-default" style="display:none;">{Title}</div>
 
-            <div class="header-description" id="header-description-custom">{text:header description}</div>
-            <div class="header-description" id="header-description-default" style="display:none;">{block:Description}{Description}{/block:Description}</div>
+            <div class="header-description">{text:header description}</div>
 
-            <div class="sidebar-content" id="sidebar-content-custom">{text:sidebar content}</div>
-            <div class="sidebar-content" id="sidebar-content-default" style="display:none;">{block:Description}{Description}{/block:Description}</div>
+            <div class="sidebar-content">{text:sidebar content}</div>
 
             <p>
                 {block:ifnotpixellinks}
